@@ -1,0 +1,21 @@
+.inpTalk{
+  width: 100% !important;
+  height: 3.2vh;
+  margin-top: 1vh;
+  padding: 0.375rem 0.2vw 0.375rem 0.2vw;
+  min-height: calc(1.5em + 0.75rem + 2px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  appearance: none;
+  border-radius: 0.25rem;
+  border: 2px solid #b9bec3;
+  font-family: "Open Sans", sans-serif;
+}
+
+.inp:focus{
+  border: 2px solid #081158 !important;
+}
+

@@ -1,0 +1,75 @@
+.navBar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position:fixed;
+    overflow: hidden;
+    margin: 0 !important;
+    top: 0; 
+    z-index: 9;
+    width: 100%;
+    transition-duration: 700ms;
+    justify-content:  space-between;
+    align-items: center;
+    border-bottom: 0 solid white;
+}
+.scrolled{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:  space-between;
+    align-items: center;
+    position:fixed;
+    overflow: hidden;
+    margin: 0 !important;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    border-bottom: 1px solid #a6a6a6;
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    transition-duration: 700ms;
+}
+
+.linkScrolled{
+    font-size: 21px;
+    padding: 10px 15px;
+    display: inline-block;
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.7);
+    transition-duration: 1444ms;
+}
+.true{
+    background-color: white;
+    position: fixed;
+}
+
+.navLink{
+    font-size: 25px;
+    padding: 10px 15px;
+    display: inline-block;
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.7);
+    transition-duration: 1444ms;
+}
+
+.navLinkDiv{
+    margin-right: 5vw;
+    position: relative;
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+#logo {
+    margin-left: 5vw;
+    position: relative;
+    float: left;
+    height: 10vh;
+    cursor:pointer;
+}
+
