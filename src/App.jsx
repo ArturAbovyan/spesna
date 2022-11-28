@@ -9,7 +9,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Careers from "./pages/Careers";
 import ContactUs from "./pages/ContactUs";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import Default from "./leyouts/Default/index.jsx";
 
 function App() {

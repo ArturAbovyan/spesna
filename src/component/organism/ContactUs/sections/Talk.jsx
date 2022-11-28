@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import  {Button , SubHeading}  from '../../../atom'
 
 import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
 
 import Grid from '@mui/material/Unstable_Grid2';
 
@@ -14,6 +13,8 @@ import 'aos/dist/aos.css'
 import '../style.scss'
 
 import data from "../../../../assets/data/contact/talk.json";
+import {Alert, Snackbar} from "@mui/material";
+import SendMessage from "../../../../hooks/service";
 
 
 function Talk (){
@@ -22,22 +23,31 @@ function Talk (){
         Aos.init({duration:3000})
     },[])
 
-    const form = useRef();
+    const form = useRef()
 
-    const sendEmail = (e) => {
+    const [open, setOpen] = useState(false);
+
+
+
+    const submitHandler = (e) => {
         e.preventDefault();
+       SendMessage({form});
+       handleOpen()
 
-        emailjs.sendForm('service_6zooe43', 'template_muzj0hq', form.current, 'XOBWRxPN42lBcFMdr')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
     };
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
 
+        setOpen(false);
+    };
     return (
         <div  data-aos="fade-up" className='section'>
-            <form ref={form} onSubmit={sendEmail}>
+            <form ref={form} onSubmit={submitHandler}>
                 <Grid
                     container
                     direction="column"
@@ -61,19 +71,19 @@ function Talk (){
                         >
                             <Grid mobile={12} tablet={6} laptop={6} desktop={6} data-aos="fade-up">
                                 <label className="textBlack">First Name</label><br/>
-                                <input type="text" name="user_first_name" className="inpTalk"/>
+                                <input type="text" name="user_first_name" className="inpTalk" required/>
                             </Grid>
                             <Grid mobile={12} tablet={6} laptop={6} desktop={6} data-aos="fade-up" sx={{
                                 alignItems:"end"
                             }}>
                                 <label className="textBlack">Last Name</label><br/>
-                                <input type="text" name="user_last_name" className="inpTalk"/>
+                                <input type="text" name="user_last_name" className="inpTalk" required/>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid mobile={8} tablet={6} laptop={5} desktop={5} data-aos="fade-up" sx={{padding:"0"}}>
                         <label className="textBlack">Email Address</label><br/>
-                        <input type="email" name="user_email" className="inpTalk"/>
+                        <input type="email" name="user_email" className="inpTalk"  required/>
                     </Grid>
 
                     <Grid mobile={8} tablet={6} laptop={5} desktop={5} sx={{justifyContent:"center"}}>
@@ -85,6 +95,7 @@ function Talk (){
                             placeholder=""
                             defaultValue=""
                             name="message"
+                            required
                             style={{
                                 width: "100% ",
                                 overflow: 'auto',
@@ -108,6 +119,11 @@ function Talk (){
                     </Grid>
                 </Grid>
             </form>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} sx={{position:"sticky"}}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    This is a success message!
+                </Alert>
+            </Snackbar>
         </div>
     );
 };
